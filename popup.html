@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Device changer</title>
+	<style>
+		body {
+			width: 10em;
+		}
+		
+		label {
+			display: block;
+		}
+		
+		.scache {
+			margin-top: 1em;
+			width: 100%;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Device changer</h1>
+	<fieldset>
+		<legend>F31</legend>
+		<label for="smartphone"><input type="radio" name="device" id="smartphone" value="smartphone" /> Smartphone</label>
+		<label for="Tablet"><input type="radio" name="device" id="Tablet" value="tablet"/> Tablet</label>
+		<label for="Desktop"><input type="radio" name="device" id="Desktop" value="desktop"/> Desktop</label>
+		<script type="text/javascript" src="popup.js"></script>
+	</fieldset>
+	<fieldset>
+		<legend>OSPlatform</legend>
+		<label for="mobile"><input type="radio" name="device" id="mobile" value="1" /> Mobile</label>
+		<label for="desktopOSP"><input type="radio" name="device" id="desktopOSP" value="0"/> Desktop</label>
+	</fieldset>
+	<button class="scache">scache page</button>
+	<script type="text/javascript" src="popup.js"></script>
+</body>
+
+</html>
