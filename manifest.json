@@ -27,11 +27,28 @@
 	},
 
 	"commands": {
-		"activate-smartphone": {
+		"_execute_browser_action": {
+            "suggested_key": {
+              "default": "Ctrl+Shift+A"
+            }
+          },
+		"desktop": {
 			"suggested_key": {
-				"default": "Ctrl+Shift+W"
+				"default": "Alt+Shift+D"
 			},
-			"description": "Activate smartphone"
+			"description": "Change device"
+		},
+		"smartphone": {
+			"suggested_key": {
+				"default": "Alt+Shift+N"
+			},
+			"description": "Change device"
+		},
+		"scache": {
+			"suggested_key": {
+				"default": "Alt+Shift+C"
+			},
+			"description": "Scache"
 		}
 	}
 }

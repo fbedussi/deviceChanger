@@ -1,3 +1,5 @@
+var currentDevice = null;
+
 function addUrlParameter(tab, param, value) {
 	var query = `${param}=${value}`;
 	var pattern = `(\\?|&)(${param}=[^[&|#]*)(#[^&]*)?`;
@@ -14,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	[].forEach.call(document.querySelectorAll('[name="device"]'), function(el) {
 		el.addEventListener('click', function(e) {
 			var device = e.target.value;
-
+			currentDevice = e.target.value;
 			chrome.tabs.getSelected(null, function(tab) {
 				var param = isNaN(device) ? 'device' : 'mobile';
 				addUrlParameter(tab, param, device);
@@ -28,3 +30,19 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	});
 });
+
+chrome.runtime.onMessage.addListener(
+	function(request, sender, sendResponse) {
+		switch (request.command) {
+			case 'scache':
+				document.querySelector('.scache').click();
+				break;
+			case 'desktop':
+				document.querySelector('#desktop').click();
+				break;
+			case 'smartphone':
+				document.querySelector('#smartphone').click();
+				break;
+		}
+	}
+);
