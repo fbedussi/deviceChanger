@@ -12,6 +12,17 @@ function addUrlParameter(tab, param, value) {
 	});
 }
 
+function removeUrlParameter(tab, param) {
+	var pattern = `(\\?|&)(${param}=[^[&|#]*)(#[^&]*)?`;
+	var re = new RegExp(pattern);
+	var connector = tab.url.match(/\?/) ? '&' : '?';
+	var url = tab.url.replace(re, '');
+    
+	chrome.tabs.update(tab.id, {
+		'url': url
+	});
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 	[].forEach.call(document.querySelectorAll('[name="device"]'), function(el) {
 		el.addEventListener('click', function(e) {
@@ -27,6 +38,16 @@ document.addEventListener('DOMContentLoaded', function() {
 	document.querySelector('.scache').addEventListener('click', function() {
 		chrome.tabs.getSelected(null, function(tab) {
 			addUrlParameter(tab, 'scache', Date.now().toString());
+		});
+	});
+	
+	document.querySelector('#inspector').addEventListener('click', function(e) {
+		chrome.tabs.getSelected(null, function(tab) {
+			if (e.target.checked) {
+				addUrlParameter(tab, 'inspector', 'on');
+			} else {
+				removeUrlParameter(tab, 'inspector');
+			}
 		});
 	});
 });
